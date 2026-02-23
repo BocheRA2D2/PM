@@ -1,0 +1,277 @@
+/* ============================================
+   Game Round Screen
+   ============================================ */
+
+.game-screen {
+    display: flex;
+    flex-direction: column;
+    min-height: 100%;
+    padding: var(--space-md);
+}
+
+/* Top bar */
+.game-topbar {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: var(--space-md);
+}
+
+.game-round-info {
+    font-size: var(--font-sm);
+    color: var(--text-muted);
+    font-weight: 600;
+}
+
+.game-round-info span {
+    color: var(--text-primary);
+}
+
+/* Timer */
+.game-timer {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: var(--space-sm);
+}
+
+.timer-display {
+    width: 56px;
+    height: 56px;
+    border-radius: var(--radius-full);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: var(--font-2xl);
+    font-weight: 800;
+    background: var(--bg-glass);
+    border: 3px solid var(--accent-primary);
+    color: var(--text-primary);
+    position: relative;
+    transition: all var(--transition-fast);
+}
+
+.timer-display.warning {
+    border-color: var(--warning);
+    color: var(--warning);
+}
+
+.timer-display.danger {
+    border-color: var(--danger);
+    color: var(--danger);
+    animation: timerPulse 1s ease infinite;
+}
+
+.timer-progress {
+    position: absolute;
+    inset: -3px;
+    border-radius: 50%;
+}
+
+.timer-progress svg {
+    width: 100%;
+    height: 100%;
+    transform: rotate(-90deg);
+}
+
+.timer-progress circle {
+    fill: none;
+    stroke-width: 3;
+    stroke-linecap: round;
+}
+
+/* Letter display */
+.game-letter-container {
+    text-align: center;
+    margin-bottom: var(--space-lg);
+}
+
+.game-letter {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 80px;
+    height: 80px;
+    border-radius: var(--radius-lg);
+    background: var(--accent-gradient);
+    font-size: var(--font-4xl);
+    font-weight: 900;
+    color: white;
+    box-shadow: var(--shadow-glow-lg);
+    animation: letterReveal 0.6s ease forwards;
+}
+
+.game-letter-label {
+    font-size: var(--font-xs);
+    color: var(--text-muted);
+    margin-top: var(--space-sm);
+    font-weight: 500;
+}
+
+/* Answer form */
+.answer-form {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-sm);
+    flex: 1;
+    overflow-y: auto;
+    padding-bottom: 80px;
+}
+
+.answer-row {
+    display: flex;
+    align-items: center;
+    gap: var(--space-sm);
+    animation: fadeInUp 0.3s ease forwards;
+}
+
+.answer-category {
+    min-width: 90px;
+    font-size: var(--font-xs);
+    font-weight: 600;
+    color: var(--text-muted);
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    line-height: 1.2;
+}
+
+.answer-input {
+    flex: 1;
+    padding: 12px 14px;
+    background: rgba(255, 255, 255, 0.05);
+    border: 1px solid var(--border-glass);
+    border-radius: var(--radius-sm);
+    color: var(--text-primary);
+    font-family: var(--font-family);
+    font-size: var(--font-md);
+    outline: none;
+    transition: all var(--transition-fast);
+}
+
+.answer-input:focus {
+    border-color: var(--accent-primary);
+    background: rgba(255, 255, 255, 0.08);
+}
+
+.answer-input:disabled {
+    opacity: 0.5;
+}
+
+.answer-input.valid {
+    border-color: var(--success);
+}
+
+.answer-input.invalid {
+    border-color: var(--danger);
+}
+
+/* Submit button fixed at bottom */
+.game-submit-bar {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    padding: var(--space-md) var(--space-lg);
+    padding-bottom: calc(var(--space-md) + var(--safe-bottom));
+    background: linear-gradient(to top, var(--bg-primary) 60%, transparent);
+    z-index: 100;
+}
+
+.game-submit-bar .btn {
+    width: 100%;
+}
+
+/* Waiting state */
+.game-waiting {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: var(--space-lg);
+    padding: var(--space-2xl);
+    text-align: center;
+}
+
+.game-waiting h3 {
+    font-size: var(--font-xl);
+    color: var(--text-secondary);
+}
+
+.submitted-count {
+    font-size: var(--font-sm);
+    color: var(--text-muted);
+}
+
+/* Countdown big */
+.countdown-overlay {
+    position: fixed;
+    inset: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: rgba(10, 14, 26, 0.9);
+    z-index: 2000;
+}
+
+.countdown-number {
+    font-size: 8rem;
+    font-weight: 900;
+    background: var(--accent-gradient);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    animation: scaleIn 0.5s ease forwards;
+}
+
+/* Score mini display */
+.game-scores-mini {
+    display: flex;
+    gap: var(--space-sm);
+    overflow-x: auto;
+    padding-bottom: var(--space-sm);
+}
+
+.score-mini-item {
+    display: flex;
+    align-items: center;
+    gap: var(--space-xs);
+    padding: 4px 10px;
+    background: var(--bg-glass);
+    border-radius: var(--radius-xl);
+    font-size: var(--font-xs);
+    font-weight: 600;
+    white-space: nowrap;
+    flex-shrink: 0;
+}
+
+.score-mini-name {
+    color: var(--text-muted);
+    max-width: 60px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.score-mini-pts {
+    color: var(--accent-primary-hover);
+}
+
+/* Anti-cheat warning */
+.anticheat-warning {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    padding: var(--space-xl);
+    background: var(--danger-bg);
+    border: 2px solid var(--danger);
+    border-radius: var(--radius-lg);
+    text-align: center;
+    z-index: 3000;
+    max-width: 320px;
+    animation: shake 0.5s ease;
+}
+
+.anticheat-warning h3 {
+    color: var(--danger);
+    margin-bottom: var(--space-md);
+}

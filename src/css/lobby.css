@@ -1,0 +1,386 @@
+/* ============================================
+   Lobby Screen
+   ============================================ */
+
+.lobby-screen {
+    padding: var(--space-lg);
+}
+
+.lobby-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: var(--space-lg);
+}
+
+.lobby-header h2 {
+    font-size: var(--font-2xl);
+    font-weight: 800;
+}
+
+.lobby-back-btn {
+    width: 40px;
+    height: 40px;
+    border-radius: var(--radius-full);
+    background: var(--bg-glass);
+    border: 1px solid var(--border-glass);
+    color: var(--text-primary);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    font-size: var(--font-lg);
+    transition: all var(--transition-fast);
+}
+
+.lobby-back-btn:hover {
+    background: var(--bg-glass-hover);
+}
+
+/* Tabs */
+.lobby-tabs {
+    display: flex;
+    gap: var(--space-xs);
+    background: var(--bg-glass);
+    border-radius: var(--radius-md);
+    padding: 4px;
+    margin-bottom: var(--space-lg);
+}
+
+.lobby-tab {
+    flex: 1;
+    padding: 10px;
+    border: none;
+    border-radius: var(--radius-sm);
+    background: transparent;
+    color: var(--text-muted);
+    font-family: var(--font-family);
+    font-size: var(--font-sm);
+    font-weight: 600;
+    cursor: pointer;
+    transition: all var(--transition-fast);
+}
+
+.lobby-tab.active {
+    background: var(--accent-primary);
+    color: white;
+}
+
+/* Room creation form */
+.create-room-form {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-lg);
+}
+
+.form-group {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-sm);
+}
+
+.form-group label {
+    font-size: var(--font-sm);
+    font-weight: 600;
+    color: var(--text-secondary);
+    display: flex;
+    align-items: center;
+    gap: var(--space-sm);
+}
+
+/* Select styled */
+.select-field {
+    width: 100%;
+    padding: 14px 18px;
+    background: rgba(255, 255, 255, 0.05);
+    border: 1px solid var(--border-glass);
+    border-radius: var(--radius-md);
+    color: var(--text-primary);
+    font-family: var(--font-family);
+    font-size: var(--font-md);
+    outline: none;
+    cursor: pointer;
+    appearance: none;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 12 12'%3E%3Cpath fill='%2394a3b8' d='M6 8L1 3h10z'/%3E%3C/svg%3E");
+    background-repeat: no-repeat;
+    background-position: right 14px center;
+}
+
+.select-field option {
+    background: var(--bg-secondary);
+    color: var(--text-primary);
+}
+
+/* Toggle */
+.toggle-wrapper {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.toggle {
+    width: 48px;
+    height: 28px;
+    border-radius: 14px;
+    background: rgba(255, 255, 255, 0.1);
+    border: none;
+    cursor: pointer;
+    position: relative;
+    transition: background var(--transition-fast);
+}
+
+.toggle.active {
+    background: var(--accent-primary);
+}
+
+.toggle::after {
+    content: '';
+    position: absolute;
+    width: 22px;
+    height: 22px;
+    border-radius: 50%;
+    background: white;
+    top: 3px;
+    left: 3px;
+    transition: transform var(--transition-fast);
+}
+
+.toggle.active::after {
+    transform: translateX(20px);
+}
+
+/* Room list */
+.room-list {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-md);
+}
+
+.room-card {
+    display: flex;
+    align-items: center;
+    gap: var(--space-md);
+    padding: var(--space-md) var(--space-lg);
+    background: var(--bg-glass);
+    border: 1px solid var(--border-glass);
+    border-radius: var(--radius-md);
+    cursor: pointer;
+    transition: all var(--transition-fast);
+}
+
+.room-card:hover {
+    border-color: var(--accent-primary);
+    background: var(--bg-glass-hover);
+    transform: translateY(-1px);
+}
+
+.room-card-info {
+    flex: 1;
+}
+
+.room-card-name {
+    font-weight: 600;
+    font-size: var(--font-md);
+    margin-bottom: 2px;
+}
+
+.room-card-meta {
+    font-size: var(--font-xs);
+    color: var(--text-muted);
+    display: flex;
+    gap: var(--space-md);
+}
+
+.room-card-players {
+    font-size: var(--font-sm);
+    font-weight: 600;
+    color: var(--accent-primary);
+}
+
+/* Join code input */
+.join-code-section {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: var(--space-lg);
+    padding: var(--space-2xl) 0;
+}
+
+.code-input {
+    display: flex;
+    gap: var(--space-sm);
+    justify-content: center;
+}
+
+.code-digit {
+    width: 48px;
+    height: 56px;
+    text-align: center;
+    font-size: var(--font-2xl);
+    font-weight: 700;
+    text-transform: uppercase;
+    background: var(--bg-glass);
+    border: 2px solid var(--border-glass);
+    border-radius: var(--radius-md);
+    color: var(--text-primary);
+    outline: none;
+    font-family: var(--font-family);
+}
+
+.code-digit:focus {
+    border-color: var(--accent-primary);
+    box-shadow: 0 0 0 3px rgba(99, 102, 241, 0.2);
+}
+
+/* Waiting room */
+.waiting-room {
+    padding: var(--space-lg);
+}
+
+.waiting-room-header {
+    text-align: center;
+    margin-bottom: var(--space-xl);
+}
+
+.waiting-room-code {
+    display: inline-flex;
+    align-items: center;
+    gap: var(--space-sm);
+    padding: 10px 20px;
+    background: var(--bg-glass);
+    border: 1px solid var(--border-glass);
+    border-radius: var(--radius-md);
+    font-size: var(--font-2xl);
+    font-weight: 800;
+    letter-spacing: 4px;
+    color: var(--accent-primary-hover);
+    cursor: pointer;
+    margin-top: var(--space-md);
+}
+
+.waiting-room-code:hover {
+    background: var(--bg-glass-hover);
+}
+
+.player-list {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-sm);
+    margin-bottom: var(--space-xl);
+}
+
+.player-item {
+    display: flex;
+    align-items: center;
+    gap: var(--space-md);
+    padding: var(--space-md);
+    background: var(--bg-glass);
+    border: 1px solid var(--border-glass);
+    border-radius: var(--radius-md);
+    animation: fadeInUp 0.3s ease forwards;
+}
+
+.player-item-name {
+    font-weight: 600;
+    flex: 1;
+}
+
+.player-item-host {
+    font-size: var(--font-xs);
+    color: var(--gold);
+    font-weight: 600;
+}
+
+.player-item-ready {
+    font-size: var(--font-xs);
+    padding: 4px 10px;
+    border-radius: var(--radius-xl);
+}
+
+.player-item-ready.ready {
+    background: var(--success-bg);
+    color: var(--success);
+}
+
+.player-item-ready.not-ready {
+    background: var(--warning-bg);
+    color: var(--warning);
+}
+
+/* Settings summary */
+.settings-summary {
+    background: var(--bg-glass);
+    border: 1px solid var(--border-glass);
+    border-radius: var(--radius-md);
+    padding: var(--space-md);
+    margin-bottom: var(--space-lg);
+}
+
+.settings-row {
+    display: flex;
+    justify-content: space-between;
+    padding: 6px 0;
+    font-size: var(--font-sm);
+}
+
+.settings-row-label {
+    color: var(--text-muted);
+}
+
+.settings-row-value {
+    font-weight: 600;
+    color: var(--text-primary);
+}
+
+/* Category selection */
+.category-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: var(--space-sm);
+    margin-top: var(--space-md);
+}
+
+.category-chip {
+    padding: 10px 14px;
+    border-radius: var(--radius-md);
+    background: var(--bg-glass);
+    border: 1px solid var(--border-glass);
+    color: var(--text-secondary);
+    font-size: var(--font-sm);
+    font-weight: 500;
+    cursor: pointer;
+    transition: all var(--transition-fast);
+    text-align: center;
+    font-family: var(--font-family);
+}
+
+.category-chip.selected {
+    background: rgba(99, 102, 241, 0.2);
+    border-color: var(--accent-primary);
+    color: var(--accent-primary-hover);
+}
+
+.category-chip:hover {
+    background: var(--bg-glass-hover);
+    border-color: var(--border-glass-hover);
+}
+
+.selected-count {
+    font-size: var(--font-sm);
+    color: var(--text-muted);
+    text-align: center;
+    margin-top: var(--space-sm);
+}
+
+/* Empty state */
+.empty-state {
+    text-align: center;
+    padding: var(--space-2xl);
+    color: var(--text-muted);
+}
+
+.empty-state-icon {
+    font-size: 3rem;
+    margin-bottom: var(--space-md);
+    opacity: 0.5;
+}
